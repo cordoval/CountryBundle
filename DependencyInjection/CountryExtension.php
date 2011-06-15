@@ -31,17 +31,16 @@ class CountryExtension extends Extension
 
         $config = $processor->process($configuration->getConfigTree(), $configs);
 
-        foreach ($configs as $config) {
-            $this->doConfigLoad($config, $container);
-        }
-    }
+        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
-    public function doConfigLoad(array $config, ContainerBuilder $container)
-    {
-        if(!$container->hasDefinition('exercise.country.repository.country')) {
-            $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-            $loader->load('model.xml');
+        if (!in_array(strtolower($config['db_driver']), array('mongodb', 'orm'))) {
+           throw new \InvalidArgumentException(sprintf('Invalid db driver "%s".', $config['db_driver']));
         }
+
+        $loader->load(sprintf('%s.xml', $config['db_driver']));
+
+        //$container->setParameter('cordova_country.model.country.class', $config['class']['model']['country']);
+
     }
 
     /**
