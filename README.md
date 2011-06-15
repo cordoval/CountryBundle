@@ -1,3 +1,8 @@
+Contribute by PR this repo
+==========================
+
+      https://github.com/cordoval/CountryBundle
+
 Installation
 ============
 
@@ -28,6 +33,12 @@ Installation
     or just
 
           php app/console doctrine:fixtures:load
+
+  4. Add configuration:
+
+        country:
+            db_driver:       orm
+
 
 Example Usage
 -----------------------------
