@@ -34,4 +34,4 @@ Example Usage
 
   1. Load all countries:
 
-          $this['doctrine.odm.mongodb.document_manager']->getRepository('CountryBundle:Country')->findAll();
+          $this->get('doctrine')->getRepository('CountryBundle:Country')->findAll();

@@ -127,8 +127,8 @@ class CountryRepository extends EntityRepository
         $countries = array();
 
         $query = $this->createQueryBuilder('c')
-                        ->orderBy('rank', 'asc')
-                        ->orderBy('name', 'asc')
+                        ->orderBy('c.rank', 'asc')
+                        ->orderBy('c.name', 'asc')
                         ->getQuery();
 
         $results = $query->execute();
@@ -148,8 +148,8 @@ class CountryRepository extends EntityRepository
     public function findAll()
     {
         $query = $this->createQueryBuilder('c')
-                        ->orderBy('rank', 'asc')
-                        ->orderBy('name', 'asc')
+                        ->orderBy('c.rank', 'asc')
+                        ->orderBy('c.name', 'asc')
                         ->getQuery();
 
         return $query->execute();
